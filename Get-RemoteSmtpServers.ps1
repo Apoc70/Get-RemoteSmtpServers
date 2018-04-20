@@ -40,13 +40,12 @@
   .PARAMETER ToCsv
   Export search results to a single CSV file for all servers
 
-  .PRAMATER ToCsvPerServer
+  .PARAMETER ToCsvPerServer
   Export search results to a separate CSV file per servers
 
   .PARAMETER AddDays
   File selection filter, -5 will select log files changed during the last five days. Default: -10
 
-  
   .EXAMPLE
   .\Get-RemoteSmtpServers.ps1 -Servers SRV01,SRV02 -LegacyExchange -AddDays -4 -ToCsv
 
