@@ -18,7 +18,6 @@
   This scripts fetches remote SMTP servers by searching the Exchange receive connector logs for the EHLO string.
   Fetched servers can be exported to a single CSV file for all receive connectors across Exchange Servers or
   exported to a separate CSV file per Exchange Server.
-
 	
   .NOTES 
   Requirements 
@@ -27,6 +26,7 @@
   Revision History 
   -------------------------------------------------------------------------------- 
   1.0     Initial community release 
+  1.1     Issue #2 fixed
 	
   .PARAMETER Servers
   List of Exchange servers, modern and legacy Exchange servers cannot be mixed
@@ -120,15 +120,15 @@ function Write-RemoteServers {
 }
 
 ## MAIN ###########################################
-$Path = $FrontendPath
+$LogPath = $FrontendPath
 
 # Adjust CSV file name to reflect either HUB or FRONTEND transport
 if($Backend) {
-  $Path = $BackendPath
+  $LogPath = $BackendPath
   $CsvFileName = $CsvFileName.Replace('%ROLE%','HUB')
 }
 elseif($LegacyExchange) { 
-  $Path = $LegacyExchangePath
+  $LogPath = $LegacyExchangePath
   $CsvFileName = $CsvFileName.Replace('%ROLE%','HUB')
 }
 else {
@@ -142,7 +142,7 @@ foreach($Server in $Servers) {
  
   $Server = $Server.ToUpper()
 
-  $Path = $Path.Replace('%SERVER%', $Server)
+  $Path = $LogPath.Replace('%SERVER%', $Server)
 
   # fetching log files requires an account w/ administrative access to the target server
   $LogFiles = Get-ChildItem -Path $Path -File | Where-Object {$_.LastWriteTime -gt (Get-Date).AddDays($AddDays)} #| Select-Object -First 2
