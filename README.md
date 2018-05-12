@@ -54,7 +54,7 @@ RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 
 Download and vote at TechNet Gallery
 
-* [https://gallery.technet.microsoft.com/Fetch-remote-SMTP-servers-9e72f1a3] (https://gallery.technet.microsoft.com/Fetch-remote-SMTP-servers-9e72f1a3)
+* [https://gallery.technet.microsoft.com/Fetch-remote-SMTP-servers-9e72f1a3](https://gallery.technet.microsoft.com/Fetch-remote-SMTP-servers-9e72f1a3)
 
 ## Credits
 
