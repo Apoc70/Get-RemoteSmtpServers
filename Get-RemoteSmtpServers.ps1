@@ -7,7 +7,7 @@
   THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE 
   RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 	
-  Version 1.1, 2018-05-12
+  Version 1.2, 2020-10-05
 
   Ideas, comments and suggestions to support@granikos.eu 
  
@@ -25,9 +25,10 @@
 
   Revision History 
   -------------------------------------------------------------------------------- 
-  1.0     Initial community release 
-  1.1     Issue #2 fixed
-	
+  1.0 Initial community release 
+  1.1 Issue #2 fixed
+  1.2 Minor PowerShell hygiene
+  	
   .PARAMETER Servers
   List of Exchange servers, modern and legacy Exchange servers cannot be mixed
 
@@ -66,7 +67,7 @@ param(
 
 $ScriptDir = Split-Path -Path $script:MyInvocation.MyCommand.Path
 
-$CsvFileName = ('RemoteSMTPServers-%SERVER%-%ROLE%-{0}.csv' -f ((Get-Date).ToString("s").Replace(":","-")))
+$CsvFileName = ('RemoteSMTPServers-%SERVER%-%ROLE%-{0}.csv' -f ((Get-Date).ToString('s').Replace(':','-')))
 
 # ToDo: Update to Get-TransportServer/Get-TransportService 
 # Currently pretty static
@@ -97,7 +98,7 @@ function Write-RemoteServers {
     foreach($Server in $RemoteServers) { 
     
       if($Server.Trim() -ne '') { 
-        $obj = New-Object PSObject
+        $obj = New-Object -TypeName PSObject
         $obj | Add-Member -MemberType NoteProperty -Name 'Remote Server' -Value $Server
         $RemoteServersOutput += $obj
       }
@@ -135,7 +136,7 @@ else {
   $CsvFileName = $CsvFileName.Replace('%ROLE%','FE')
 }
 
-Write-Verbose -Message "CsvFileName: $($CsvFileName)"
+Write-Verbose -Message ('CsvFileName: {0}' -f $CsvFileName)
 
 # Fetch each Exchange Server server 
 foreach($Server in $Servers) {
@@ -176,7 +177,7 @@ foreach($Server in $Servers) {
    
     $CsvFile = $CsvFileName.Replace('%SERVER%',$Server)
 
-    Write-Verbose $CsvFile
+    Write-Verbose -Message $CsvFile
 
     Write-RemoteServers -FilePath $CsvFile
     
@@ -187,7 +188,7 @@ foreach($Server in $Servers) {
 if($ToCsv) { 
   $CsvFile = $CsvFileName.Replace('%SERVER%','ALL')
 
-  Write-Verbose $CsvFile
+  Write-Verbose -Message $CsvFile
 
   Write-RemoteServers -FilePath $CsvFile
 }

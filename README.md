@@ -67,4 +67,4 @@ For more Office 365, Cloud Security, and Exchange Server stuff checkout services
 
 - Blog: [http://blog.granikos.eu](http://blog.granikos.eu)
 - Website: [https://www.granikos.eu/en/](https://www.granikos.eu/en/)
-- Twitter: [https://twitter.com/granikos_de](https://twitter.com/granikos_de)itter: [https://twitter.com/granikos_de](https://twitter.com/granikos_de)
+- Twitter: [https://twitter.com/granikos_de](https://twitter.com/granikos_de)
