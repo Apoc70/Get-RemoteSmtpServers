@@ -65,8 +65,6 @@ param(
   [int]$AddDays = -10
 )
 
-$ScriptDir = Split-Path -Path $script:MyInvocation.MyCommand.Path
-
 $CsvFileName = ('RemoteSMTPServers-%SERVER%-%ROLE%-{0}.csv' -f ((Get-Date).ToString('s').Replace(':','-')))
 
 # ToDo: Update to Get-TransportServer/Get-TransportService 
