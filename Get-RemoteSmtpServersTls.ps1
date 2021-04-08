@@ -144,7 +144,7 @@ foreach($Server in $Servers) {
   Write-Verbose -Message ('Working on Server {0} | {1}' -f $Server, $Path)
 
   # fetching log files requires an account w/ administrative access to the target server
-  $LogFiles = Get-ChildItem -Path $Path -File | Where-Object {$_.LastWriteTime -gt (Get-Date).AddDays($AddDays)} | Select-Object -First 2
+  $LogFiles = Get-ChildItem -Path $Path -File | Where-Object {$_.LastWriteTime -gt (Get-Date).AddDays($AddDays)}
 
   $LogFileCount = ($LogFiles | Measure-Object).Count
   
