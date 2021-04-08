@@ -176,9 +176,18 @@ foreach($Server in $Servers) {
         # Try to resolve remote IP address as the line does not contain a server name
         $HostName = Resolve-DnsName $HostIp -ErrorAction Ignore |Select-Object -ExpandProperty NameHost -ErrorAction Ignore
 
-        if(-not $RemoteServers.Contains($HostName)) { 
-          $RemoteServers += $HostName
+        if ($null -ne $HostName)
+        {
+          if(-not $RemoteServers.Contains($HostName)) { 
+            $RemoteServers += $HostName
+          }
         }
+        else {
+          if(-not $RemoteServers.Contains($HostIp)) { 
+            $RemoteServers += $HostIp
+          }
+        }
+        
       }
 
       $FileCount++
