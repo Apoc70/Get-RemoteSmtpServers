@@ -174,7 +174,7 @@ foreach($Server in $Servers) {
         $HostIp = (($record.Line).Split(',')[5]).Split(':')[0]
 
         # Try to resolve remote IP address as the line does not contain a server name
-        $HostName = Resolve-DnsName $HostIp -ErrorAction Ignore |Select-Object -ExpandProperty NameHost
+        $HostName = Resolve-DnsName $HostIp -ErrorAction Ignore |Select-Object -ExpandProperty NameHost -ErrorAction Ignore
 
         if(-not $RemoteServers.Contains($HostName)) { 
           $RemoteServers += $HostName
