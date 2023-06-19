@@ -17,6 +17,10 @@ Fetched remote servers can be exported to a single CSV file for all receive conn
 
 List of Exchange servers, modern and legacy Exchange servers cannot be mixed
 
+### ServersToExclude
+
+List of host names that you want to exclude from the outout
+
 ### Backend
 
 Search backend transport (aka hub transport) log files, instead of frontend transport, which is the default
@@ -33,6 +37,10 @@ Export search results to a single CSV file for all servers
 
 Export search results to a separate CSV file per servers
 
+### UniqueIPs
+
+Simplify the out list by reducing the output to unique IP address
+
 ### AddDays
 
 File selection filter, -5 will select log files changed during the last five days. Default: -10
@@ -45,6 +53,13 @@ File selection filter, -5 will select log files changed during the last five day
 
 Search legacy Exchange servers SMTP receive log files for the last 4 days and save search results in a single CSV file
 
+``` PowerShell
+.\Get-RemoteSmtpServers.ps1 -Servers SRV03,SRV04 -AddDays -4 -ToCsv -UniqueIPs
+```
+
+Search Exchange servers SMTP receive log files for the last 4 days and save search results in a single CSV file, with unique IP addresses only
+
+
 ## Note
 
 THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE
@@ -54,17 +69,19 @@ RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 
 Written by: Thomas Stensitzki | MVP
 
+Related blog post: [https://granikos.eu/fetch-remote-smtp-servers-connecting-to-exchange/](https://granikos.eu/fetch-remote-smtp-servers-connecting-to-exchange/)
+
 ## Stay connected
 
-- My Blog: [http://justcantgetenough.granikos.eu](http://justcantgetenough.granikos.eu)
+- Blog: [https://blog.granikos.eu](https://blog.granikos.eu)
 - Twitter: [https://twitter.com/stensitzki](https://twitter.com/stensitzki)
 - LinkedIn: [http://de.linkedin.com/in/thomasstensitzki](http://de.linkedin.com/in/thomasstensitzki)
 - Github: [https://github.com/Apoc70](https://github.com/Apoc70)
 - MVP Blog: [https://blogs.msmvps.com/thomastechtalk/](https://blogs.msmvps.com/thomastechtalk/)
 - Tech Talk YouTube Channel (DE): [http://techtalk.granikos.eu](http://techtalk.granikos.eu)
+- Tech & Community Podcast (DE): [http://podcast.granikos.eu](http://podcast.granikos.eu)
 
-For more Office 365, Cloud Security, and Exchange Server stuff checkout services provided by Granikos
+For more Microsoft 365, Cloud Security, and Exchange Server stuff checkout the services provided by Granikos
 
-- Blog: [http://blog.granikos.eu](http://blog.granikos.eu)
-- Website: [https://www.granikos.eu/en/](https://www.granikos.eu/en/)
+- Website: [https://granikos.eu](https://granikos.eu)
 - Twitter: [https://twitter.com/granikos_de](https://twitter.com/granikos_de)
