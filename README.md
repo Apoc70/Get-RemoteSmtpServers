@@ -2,6 +2,10 @@
 
 Fetch all remote SMTP servers from Exchange receive connector logs
 
+## NOTE
+
+This repository is now archived. You can find the maintained release of the scripts [here](https://github.com/Apoc70/PowerShell-Scripts).
+
 ## Description
 
 This scripts fetches remote SMTP servers by searching the Exchange receive connector logs for the EHLO string.
